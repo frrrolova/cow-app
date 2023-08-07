@@ -1,0 +1,28 @@
+@import './buttons.scss';
+
+body {
+  margin: 0;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  form {
+    max-width: 530px;
+    text-align: center;
+
+    h2 {
+      text-align: start;
+    }
+  }
+}
