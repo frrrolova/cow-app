@@ -1,19 +1,21 @@
-import { TextField, Button } from '@mui/material'
+import { TextField, Button, Alert } from '@mui/material'
 import { useFormik } from 'formik'
-import React, { useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useCallback, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
+import { UserLoginData } from '../models/user'
+import { logIn } from '../services/auth.service'
 
 export function Auth() {
+  const navigate = useNavigate()
+  const [isLoginError, setIsLoginError] = useState<boolean>(false)
+
   const validationSchema = yup.object({
     email: yup
       .string()
       .email('Enter a valid email')
       .required('Email is required'),
-    password: yup
-      .string()
-      .min(8, 'Password should be of minimum 8 characters length')
-      .required('Password is required'),
+    password: yup.string().required('Password is required'),
   })
 
   const formik = useFormik({
@@ -22,7 +24,18 @@ export function Auth() {
       password: '',
     },
     validationSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      const data: UserLoginData = {
+        email: values.email,
+        password: values.password,
+      }
+      setIsLoginError(false)
+      logIn(data)
+        .then(() => {
+          navigate('/')
+        })
+        .catch(() => setIsLoginError(true))
+    },
   })
 
   const blurHandler = useCallback(
@@ -41,7 +54,7 @@ export function Auth() {
       <Button variant="outlined" size="small" className="screen-change-btn">
         <Link to="/register">Create account</Link>
       </Button>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <h2>LOG IN</h2>
         <TextField
           id="outlined-basic"
@@ -52,11 +65,15 @@ export function Auth() {
           margin="dense"
           value={formik.values.email}
           required
-          onChange={formik.handleChange}
+          onChange={(event) => {
+            formik.handleChange(event)
+            setIsLoginError(false)
+          }}
           onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
             blurHandler(e, 'email')
           }}
           error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
         <TextField
           id="outlined-basic"
@@ -67,10 +84,19 @@ export function Auth() {
           margin="dense"
           required
           value={formik.values.password}
-          onChange={formik.handleChange}
+          onChange={(event) => {
+            formik.handleChange(event)
+            setIsLoginError(false)
+          }}
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
         />
+        {isLoginError && (
+          <Alert severity="error" variant="outlined">
+            Incorrect e-mail or password
+          </Alert>
+        )}
         <Button variant="contained" className="form-btn" type="submit">
           Log In
         </Button>

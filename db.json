@@ -1,3 +1,17 @@
 {
-  "users": []
+  "users": [
+    {
+      "email": "lala@lalala",
+      "password": "$2a$10$W.0U.mFyJnAkDX7K4CFzxezw4q01vrNEuLKnxESbqmGfVwTot8XkC",
+      "id": 1
+    },
+    {
+      "email": "aaa@aaa",
+      "password": "$2a$10$RIrJXNsMq3tPCLbEpEpZROYf8ZX.kvteBZJDOIUGd37GD20ciL2Ri",
+      "name": "AAA",
+      "phone": "+1234567890",
+      "id": 2
+    }
+  ],
+  "posts": []
 }

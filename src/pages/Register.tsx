@@ -1,11 +1,15 @@
 import { TextField, Button } from '@mui/material'
 import { useFormik } from 'formik'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import * as yup from 'yup'
+import { UserRegistrationData } from '../models/user'
+import { register } from '../services/auth.service'
+import { useNavigate } from 'react-router-dom'
 
 export function Register() {
   // const nameInputRef = useRef<HTMLInputElement>()
-  // const [email, setEmail] = useState<string>('')
+  const [isRegistering, setIsRegistering] = useState<boolean>(false)
+  const navigate = useNavigate()
 
   const validationSchema = yup.object({
     name: yup
@@ -46,7 +50,20 @@ export function Register() {
       confirmPassword: '',
     },
     validationSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      setIsRegistering(true)
+      const data: UserRegistrationData = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        password: values.password,
+      }
+      register(data)
+        .then(() => {
+          navigate('/')
+        })
+        .finally(() => setIsRegistering(false))
+    },
   })
 
   console.log(formik)
@@ -141,7 +158,12 @@ export function Register() {
             Boolean(formik.errors.confirmPassword)
           }
         />
-        <Button variant="contained" className="form-btn" type="submit">
+        <Button
+          variant="contained"
+          className="form-btn"
+          type="submit"
+          disabled={isRegistering}
+        >
           Create account
         </Button>
       </form>
