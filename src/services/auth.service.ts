@@ -23,7 +23,7 @@ export function logIn(data: UserLoginData): Promise<User> {
     })
 }
 
-export function logout() {
+export function logOut() {
   localStorage.removeItem('user')
   localStorage.removeItem('accessToken')
 }
