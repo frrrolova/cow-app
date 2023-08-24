@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
-import { User, UserLoginData } from '../models/user'
-import { logIn as serviceLogIn } from '../services/auth.service'
+import { User, UserLoginData, UserRegistrationData } from '../models/user'
+import {
+  logIn as serviceLogIn,
+  logOut as serviceLogOut,
+  register as serviceRegister,
+} from '../services/auth.service'
 
 export function useAuth() {
   const [user, setUser] = useState<User>()
@@ -11,16 +15,26 @@ export function useAuth() {
     }
   }, [])
 
-  const logIn = (data: UserLoginData) => {
-    serviceLogIn(data)
+  const logIn = (data: UserLoginData): Promise<User> => {
+    return serviceLogIn(data).then((user) => {
+      setUser(user)
+      return user
+    })
   }
-  const logOut = () => {}
-  const register = () => {}
+
+  const logOut = (): void => {
+    setUser(undefined)
+    return serviceLogOut()
+  }
+
+  const register = (data: UserRegistrationData): Promise<User> => {
+    return serviceRegister(data)
+  }
 
   return {
     user,
-    login,
-    logout,
+    logIn,
+    logOut,
     register,
   }
 }

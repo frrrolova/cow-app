@@ -3,13 +3,15 @@ import { useFormik } from 'formik'
 import React, { useCallback, useState } from 'react'
 import * as yup from 'yup'
 import { UserRegistrationData } from '../models/user'
-import { register } from '../services/auth.service'
+// import { register } from '../services/auth.service'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../hooks/auth.hook'
 
 export function Register() {
   // const nameInputRef = useRef<HTMLInputElement>()
   const [isRegistering, setIsRegistering] = useState<boolean>(false)
   const navigate = useNavigate()
+  const { register } = useAuth()
 
   const validationSchema = yup.object({
     name: yup
@@ -60,7 +62,7 @@ export function Register() {
       }
       register(data)
         .then(() => {
-          navigate('/')
+          navigate('/subscribe')
         })
         .finally(() => setIsRegistering(false))
     },

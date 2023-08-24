@@ -4,11 +4,13 @@ import React, { useCallback, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { UserLoginData } from '../models/user'
-import { logIn } from '../services/auth.service'
+// import { logIn } from '../services/auth.service'
+import { useAuth } from '../hooks/auth.hook'
 
 export function Auth() {
   const navigate = useNavigate()
   const [isLoginError, setIsLoginError] = useState<boolean>(false)
+  const { logIn } = useAuth()
 
   const validationSchema = yup.object({
     email: yup

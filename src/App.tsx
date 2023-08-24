@@ -4,6 +4,8 @@ import { Auth } from './pages/Auth'
 import { Register } from './pages/Register'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Container } from '@mui/material'
+import { Subscribe } from './pages/Subscribe'
+import { Account } from './pages/Account'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/subscribe',
+    element: <Subscribe />,
+  },
+  {
+    path: '/account',
+    element: <Account />,
   },
 ])
 

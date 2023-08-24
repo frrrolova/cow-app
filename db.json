@@ -11,6 +11,13 @@
       "name": "AAA",
       "phone": "+1234567890",
       "id": 2
+    },
+    {
+      "email": "bbb@bbb",
+      "password": "$2a$10$/aAXxiH3BSUo2vsrofNIM.iiOendXoJjgUPU/Xt2w/5HfqkMOb3aG",
+      "name": "bbb",
+      "phone": "+9876543210",
+      "id": 3
     }
   ],
   "posts": []
