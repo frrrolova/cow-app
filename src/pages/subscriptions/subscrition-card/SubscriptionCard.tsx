@@ -1,5 +1,5 @@
+import checkmarkOut from '../../../assets/checkmark-outlined.svg'
 import checkmark from '../../../assets/checkmark.svg'
-
 interface SubscriptionCardProps {
   name: string
   price: string
@@ -16,48 +16,54 @@ export function SubscriptionCard({
   kitchen,
 }: SubscriptionCardProps) {
   return (
-    <div className="card">
-      <div className="card__container">
-        <div className="card__title">
-          <h3 className="card__name">{name}</h3>
+    <>
+      <details className="card">
+        <summary className="card__container">
+          <div className="card__title">
+            <h3 className="card__name">{name}</h3>
+          </div>
+          <div className="card__info-item info">
+            <div className="info__icon">
+              <img src={checkmarkOut} alt="checkmark" />
+            </div>
+            <div className="info__description">
+              <div className="info__title">Price</div>
+              <div className="info__params">EUR {price}</div>
+            </div>
+          </div>
+          <div className="card__info-item info">
+            <div className="info__icon">
+              <img src={checkmarkOut} alt="checkmark" />
+            </div>
+            <div className="info__description">
+              <div className="info__title">Access</div>
+              <div className="info__params">{access}</div>
+            </div>
+          </div>
+          <div className="card__info-item info">
+            <div className="info__icon">
+              <img src={checkmarkOut} alt="checkmark" />
+            </div>
+            <div className="info__description">
+              <div className="info__title">Storage space</div>
+              <div className="info__params">{storage}</div>
+            </div>
+          </div>
+          <div className="card__info-item info">
+            <div className="info__icon">
+              <img src={checkmarkOut} alt="checkmark" />
+            </div>
+            <div className="info__description">
+              <div className="info__title">Kitchen access</div>
+              <div className="info__params">{kitchen}</div>
+            </div>
+          </div>
+        </summary>
+        <div className="card__selected">
+          <img src={checkmark} alt="checkmark" />
+          Selected
         </div>
-        <div className="card__info-item info">
-          <div className="info__icon">
-            <img src={checkmark} alt="checkmark" />
-          </div>
-          <div className="info__description">
-            <div className="info__title">Price</div>
-            <div className="info__params">EUR {price}</div>
-          </div>
-        </div>
-        <div className="card__info-item info">
-          <div className="info__icon">
-            <img src={checkmark} alt="checkmark" />
-          </div>
-          <div className="info__description">
-            <div className="info__title">Access</div>
-            <div className="info__params">{access}</div>
-          </div>
-        </div>
-        <div className="card__info-item info">
-          <div className="info__icon">
-            <img src={checkmark} alt="checkmark" />
-          </div>
-          <div className="info__description">
-            <div className="info__title">Storage space</div>
-            <div className="info__params">{storage}</div>
-          </div>
-        </div>
-        <div className="card__info-item info">
-          <div className="info__icon">
-            <img src={checkmark} alt="checkmark" />
-          </div>
-          <div className="info__description">
-            <div className="info__title">Kitchen access</div>
-            <div className="info__params">{kitchen}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+      </details>
+    </>
   )
 }

@@ -1,8 +1,22 @@
 .card {
+  display: flex;
+  justify-content: center;
   width: 350px;
-  height: 400px;
   border: 2px solid #d9d9d9;
   border-radius: 7px;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 2px 0px;
+  }
+
+  &[open] {
+    transform: translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 2px 0px,
+      rgba(128, 128, 128, 0.7) 0px 0px 2px 1px;
+  }
 
   &__container {
     padding: 5px;
@@ -25,6 +39,15 @@
     margin: 20px 5px 10px;
     padding-bottom: 10px;
   }
+
+  &__selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 0 13px;
+    font-weight: 500;
+    color: #3db760;
+  }
 }
 
 .info {
@@ -42,8 +65,10 @@
   }
 
   &__title {
+    margin-bottom: 5px;
     font-size: 14px;
     font-weight: 500;
+    color: #696969;
   }
 
   &__params {

@@ -16,6 +16,21 @@ export function Subscribe() {
             storage="no"
             kitchen="yes"
           />
+          <SubscriptionCard
+            name="Monthly Pass"
+            price="100"
+            access="0-24h"
+            storage="yes"
+            kitchen="yes"
+          />
+
+          <SubscriptionCard
+            name="Hourly"
+            price="5"
+            access="8-20h"
+            storage="no"
+            kitchen="yes"
+          />
         </div>
       </div>
       <Button variant="outlined" size="small" onClick={() => navigate('/')}>
