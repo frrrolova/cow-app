@@ -1,26 +1,31 @@
+import { useState } from 'react'
 import checkmarkOut from '../../../assets/checkmark-outlined.svg'
 import checkmark from '../../../assets/checkmark.svg'
-interface SubscriptionCardProps {
-  name: string
-  price: string
-  access: string
-  storage: string
-  kitchen: string
-}
+import { SubscriptionCardData } from '../../../models/subscriptions-response'
 
 export function SubscriptionCard({
-  name,
-  price,
-  access,
-  storage,
-  kitchen,
-}: SubscriptionCardProps) {
+  subscription,
+}: {
+  subscription: SubscriptionCardData
+}) {
+  const [isOpened, setIsOpened] = useState<boolean>(false)
   return (
     <>
-      <details className="card">
+      <details
+        className="card"
+        open={isOpened}
+        onClick={(e) => {
+          e.preventDefault()
+          setIsOpened(true)
+        }}
+        onBlur={(e) => {
+          e.preventDefault()
+          setIsOpened(false)
+        }}
+      >
         <summary className="card__container">
           <div className="card__title">
-            <h3 className="card__name">{name}</h3>
+            <h3 className="card__name">{subscription.name}</h3>
           </div>
           <div className="card__info-item info">
             <div className="info__icon">
@@ -28,7 +33,7 @@ export function SubscriptionCard({
             </div>
             <div className="info__description">
               <div className="info__title">Price</div>
-              <div className="info__params">EUR {price}</div>
+              <div className="info__params">EUR {subscription.price}</div>
             </div>
           </div>
           <div className="card__info-item info">
@@ -37,7 +42,7 @@ export function SubscriptionCard({
             </div>
             <div className="info__description">
               <div className="info__title">Access</div>
-              <div className="info__params">{access}</div>
+              <div className="info__params">{subscription.access}</div>
             </div>
           </div>
           <div className="card__info-item info">
@@ -46,7 +51,7 @@ export function SubscriptionCard({
             </div>
             <div className="info__description">
               <div className="info__title">Storage space</div>
-              <div className="info__params">{storage}</div>
+              <div className="info__params">{subscription.storage}</div>
             </div>
           </div>
           <div className="card__info-item info">
@@ -55,7 +60,7 @@ export function SubscriptionCard({
             </div>
             <div className="info__description">
               <div className="info__title">Kitchen access</div>
-              <div className="info__params">{kitchen}</div>
+              <div className="info__params">{subscription.kitchen}</div>
             </div>
           </div>
         </summary>

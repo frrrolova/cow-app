@@ -62,7 +62,7 @@ export function Register() {
       }
       register(data)
         .then(() => {
-          navigate('/subscribe')
+          navigate('/join')
         })
         .finally(() => setIsRegistering(false))
     },

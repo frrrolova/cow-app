@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Container } from '@mui/material'
 import { Subscribe } from './pages/Subscribe'
 import { Account } from './pages/Account'
+import { SubscriptionAfterReg } from './pages/SubscriptionAfterReg'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/join',
+    element: <SubscriptionAfterReg />,
   },
   {
     path: '/subscribe',

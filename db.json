@@ -20,5 +20,30 @@
       "id": 3
     }
   ],
-  "posts": []
+  "subscriptions": [
+    {
+      "id": 1,
+      "name": "Daily Pass",
+      "price": "10",
+      "access": "8-20h",
+      "storage": "no",
+      "kitchen": "yes"
+    },
+    {
+      "id": 2,
+      "name": "Monthly Pass",
+      "price": "100",
+      "access": "0-24h",
+      "storage": "yes",
+      "kitchen": "yes"
+    },
+    {
+      "id": 3,
+      "name": "Hourly",
+      "price": "5",
+      "access": "8-20h",
+      "storage": "no",
+      "kitchen": "yes"
+    }
+  ]
 }

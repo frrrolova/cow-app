@@ -1,41 +1,23 @@
-import { Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { SubscriptionCard } from './subscriptions/subscrition-card/SubscriptionCard'
+import { getAllSubscribes } from '../services/subscriptions.service'
+import { SubscriptionCardData } from '../models/subscriptions-response'
 
 export function Subscribe() {
-  const navigate = useNavigate()
+  const [data, setData] = useState<SubscriptionCardData[]>([])
+  useEffect(() => {
+    getAllSubscribes().then((response) => setData(response))
+  }, [])
   return (
     <form>
       <h2>Subscribe</h2>
       <div className="subscribe-options">
         <div className="subscribe-options__container">
-          <SubscriptionCard
-            name="Daily Pass"
-            price="10"
-            access="8-20h"
-            storage="no"
-            kitchen="yes"
-          />
-          <SubscriptionCard
-            name="Monthly Pass"
-            price="100"
-            access="0-24h"
-            storage="yes"
-            kitchen="yes"
-          />
-
-          <SubscriptionCard
-            name="Hourly"
-            price="5"
-            access="8-20h"
-            storage="no"
-            kitchen="yes"
-          />
+          {data.map((item: SubscriptionCardData) => (
+            <SubscriptionCard key={item.id} subscription={item} />
+          ))}
         </div>
       </div>
-      <Button variant="outlined" size="small" onClick={() => navigate('/')}>
-        Skip
-      </Button>
     </form>
   )
 }
