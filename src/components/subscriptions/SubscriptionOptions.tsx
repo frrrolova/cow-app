@@ -3,12 +3,15 @@ import { SubscriptionCardData } from '../../models/subscriptions-response'
 import { SubscriptionCard } from './subscription-card/SubscriptionCard'
 import { getAllSubscribes } from '../../services/subscriptions.service'
 import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 export function SubscriptionOptions() {
   const [data, setData] = useState<SubscriptionCardData[]>([])
   useEffect(() => {
     getAllSubscribes().then((response) => setData(response))
   }, [])
+  const navigate = useNavigate()
+
   return (
     <>
       <div className="subscribe-options">
@@ -19,7 +22,12 @@ export function SubscriptionOptions() {
         </div>
       </div>
       <div className="subcribe-btns-container">
-        <Button size="large" variant="contained" className="subscribe-btn">
+        <Button
+          size="large"
+          variant="contained"
+          className="subscribe-btn"
+          onClick={() => navigate('/checkout')}
+        >
           Next
         </Button>
       </div>

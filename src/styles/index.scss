@@ -24,13 +24,18 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &--auth {
+    height: 81px;
+    justify-content: flex-end;
+  }
 }
 
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 81px);
 
   form {
     max-width: 530px;

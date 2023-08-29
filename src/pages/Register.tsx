@@ -3,12 +3,12 @@ import { useFormik } from 'formik'
 import React, { useCallback, useState } from 'react'
 import * as yup from 'yup'
 import { UserRegistrationData } from '../models/user'
-// import { register } from '../services/auth.service'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/auth.hook'
+import { NavigationBtn } from '../components/buttons/NavigationBtn'
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 
 export function Register() {
-  // const nameInputRef = useRef<HTMLInputElement>()
   const [isRegistering, setIsRegistering] = useState<boolean>(false)
   const navigate = useNavigate()
   const { register } = useAuth()
@@ -81,14 +81,15 @@ export function Register() {
     [formik]
   )
 
-  // const emailHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEmail(e.target.value)
-  // }, [])
-
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
+      <header className="header">
         <h2>REGISTRATION</h2>
+        <div className="navigation">
+          <NavigationBtn text="Home" route="/" icon={<HomeOutlinedIcon />} />
+        </div>
+      </header>
+      <form onSubmit={formik.handleSubmit}>
         <TextField
           id="outlined-basic"
           name="name"
@@ -98,7 +99,6 @@ export function Register() {
           margin="dense"
           required
           value={formik.values.name}
-          // inputRef={nameInputRef}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
