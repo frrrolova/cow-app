@@ -7,6 +7,7 @@ import { Container } from '@mui/material'
 import { Subscribe } from './pages/Subscribe'
 import { Account } from './pages/Account'
 import { SubscriptionAfterReg } from './pages/SubscriptionAfterReg'
+import { Checkout } from './pages/Checkout'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/account',
     element: <Account />,
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />,
   },
 ])
 

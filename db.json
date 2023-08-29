@@ -18,6 +18,13 @@
       "name": "bbb",
       "phone": "+9876543210",
       "id": 3
+    },
+    {
+      "email": "ccc@ccc",
+      "password": "$2a$10$DvsuXHrv9d6R2zKgsWI5R.kIYZlxcH2t/xZcrUpuOmCd5.U2j0rTy",
+      "name": "cccc",
+      "phone": "+111111111111",
+      "id": 4
     }
   ],
   "subscriptions": [

@@ -1,16 +1,14 @@
-import { Button } from '@mui/material'
-import { Subscribe } from './Subscribe'
-import { useNavigate } from 'react-router-dom'
+import { NavigationBtn } from '../components/buttons/NavigationBtn'
+import { SubscriptionOptions } from '../components/subscriptions/SubscriptionOptions'
 
 export function SubscriptionAfterReg() {
-  const navigate = useNavigate()
   return (
     <>
-      <Subscribe />
-
-      <Button variant="outlined" size="small" onClick={() => navigate('/')}>
-        Skip
-      </Button>
+      <header className="header">
+        <h2>Subscribe</h2>
+        <NavigationBtn text="Skip" route="/" />
+      </header>
+      <SubscriptionOptions />
     </>
   )
 }
