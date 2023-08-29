@@ -8,3 +8,11 @@ button.screen-change-btn {
   right: 10px;
   font-size: 12px;
 }
+
+button.nav-btn {
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+}

@@ -16,7 +16,7 @@ export function SubscriptionCard({
         open={isOpened}
         onClick={(e) => {
           e.preventDefault()
-          setIsOpened(true)
+          isOpened ? setIsOpened(false) : setIsOpened(true)
         }}
         onBlur={(e) => {
           e.preventDefault()

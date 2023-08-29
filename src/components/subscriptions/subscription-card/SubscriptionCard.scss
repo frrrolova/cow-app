@@ -3,7 +3,7 @@
   justify-content: center;
   width: 350px;
   border: 2px solid #d9d9d9;
-  border-radius: 7px;
+  border-radius: 9px;
   transition: box-shadow 0.2s, transform 0.2s;
 
   &:hover {
@@ -16,6 +16,16 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px 0px,
       rgba(0, 0, 0, 0.1) 0px 0px 2px 0px,
       rgba(128, 128, 128, 0.7) 0px 0px 2px 1px;
+
+    .card__title {
+      background: rgb(91, 174, 91);
+      background: linear-gradient(
+        140deg,
+        rgba(91, 174, 91, 1) 0%,
+        rgba(105, 188, 105, 1) 41%,
+        rgba(223, 244, 148, 1) 100%
+      );
+    }
   }
 
   &__container {
@@ -26,7 +36,7 @@
     height: 90px;
     padding: 15px;
     border-radius: 7px;
-    background-color: #5bae5b;
+    background: #5bae5b;
   }
 
   &__name {

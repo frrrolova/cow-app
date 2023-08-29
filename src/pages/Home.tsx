@@ -1,6 +1,7 @@
 import { Button } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/auth.hook'
+import { NavigationBtn } from '../components/buttons/NavigationBtn'
 
 export function Home() {
   const navigate = useNavigate()
@@ -9,28 +10,21 @@ export function Home() {
 
   return (
     <>
-      <h1>Home</h1>
-      {!user && (
-        <Button variant="outlined" size="small">
-          <Link to="/register">Create account</Link>
-        </Button>
-      )}{' '}
-      {user && (
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => navigate('/account')}
-        >
-          Account
-        </Button>
-      )}
-      <Button
-        variant="outlined"
-        size="small"
-        onClick={() => (user ? logOut() : navigate('/auth'))}
-      >
-        {user ? 'Log Out' : 'Log in'}
-      </Button>
+      <header className="header">
+        <h1>Home</h1>
+        <nav className="navigation">
+          {!user && <NavigationBtn text="Create account" route="/register" />}{' '}
+          {user && <NavigationBtn text="Account" route="/account" />}
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => (user ? logOut() : navigate('/auth'))}
+            className="home-nav-btn"
+          >
+            {user ? 'Log Out' : 'Log in'}
+          </Button>
+        </nav>
+      </header>
     </>
   )
 }
