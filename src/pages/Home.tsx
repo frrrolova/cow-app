@@ -5,6 +5,7 @@ import { NavigationBtn } from '../components/buttons/NavigationBtn'
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
+import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined'
 
 export function Home() {
   const navigate = useNavigate()
@@ -16,7 +17,13 @@ export function Home() {
       <header className="header">
         <h1>Home</h1>
         <nav className="navigation">
-          {!user && <NavigationBtn text="Create account" route="/register" />}{' '}
+          {!user && (
+            <NavigationBtn
+              text="Create account"
+              route="/register"
+              icon={<EditNoteOutlinedIcon />}
+            />
+          )}{' '}
           {user && (
             <NavigationBtn
               text="Account"
