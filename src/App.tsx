@@ -1,44 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Home } from './pages/Home'
-import { Auth } from './pages/Auth'
-import { Register } from './pages/Register'
+import {  RouterProvider } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Container } from '@mui/material'
-import { Subscribe } from './pages/Subscribe'
-import { Account } from './pages/Account'
-import { SubscriptionAfterReg } from './pages/SubscriptionAfterReg'
-import { Checkout } from './pages/Checkout'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/auth',
-    element: <Auth />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
-  },
-  {
-    path: '/join',
-    element: <SubscriptionAfterReg />,
-  },
-  {
-    path: '/subscribe',
-    element: <Subscribe />,
-  },
-  {
-    path: '/account',
-    element: <Account />,
-  },
-  {
-    path: '/checkout',
-    element: <Checkout />,
-  },
-])
+import { router } from './Router'
 
 const theme = createTheme({
   palette: {
