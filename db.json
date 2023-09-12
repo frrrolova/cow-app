@@ -52,5 +52,13 @@
       "storage": "no",
       "kitchen": "yes"
     }
-  ]
+  ],
+  "selectedSubscription": {
+    "id": 2,
+    "name": "Monthly Pass",
+    "price": "100",
+    "access": "0-24h",
+    "storage": "yes",
+    "kitchen": "yes"
+  }
 }

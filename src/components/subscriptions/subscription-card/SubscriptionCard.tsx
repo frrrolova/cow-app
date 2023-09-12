@@ -1,26 +1,25 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import checkmarkOut from '../../../assets/checkmark-outlined.svg'
 import checkmark from '../../../assets/checkmark.svg'
 import { SubscriptionCardData } from '../../../models/subscriptions-response'
 
 export function SubscriptionCard({
-  subscription,
+  subscription, isSelected, onClick
+
 }: {
-  subscription: SubscriptionCardData
+    subscription: SubscriptionCardData,
+    isSelected?: boolean
+    onClick?: (item: SubscriptionCardData) => void
 }) {
-  const [isOpened, setIsOpened] = useState<boolean>(false)
+
   return (
     <>
       <details
         className="card"
-        open={isOpened}
+        open={isSelected}
         onClick={(e) => {
           e.preventDefault()
-          isOpened ? setIsOpened(false) : setIsOpened(true)
-        }}
-        onBlur={(e) => {
-          e.preventDefault()
-          setIsOpened(false)
+          onClick?.(subscription)
         }}
       >
         <summary className="card__container">
